@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body {
+  background: #fff;
+  font-family: "Plus Jakarta Sans", serif;
+}
+.page {
+  padding: 1em 0;
+}
+.inputHolder {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.inputLabel {
+  display: block;
+  font-family: "Plus Jakarta Sans", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #141414;
+  margin-bottom: 0.2rem;
+}
+.inputArea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #dbe0e5;
+  border-radius: 8px;
+  font-family: "Plus Jakarta Sans", serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #3d4d5c;
+}
+.inputArea:focus {
+  outline-color: #369eff;
+}
+.progressBar {
+  height: 0.6rem;
+}
+.UploadImageContainer {
+  width: 100%;
+}
+.uploadedImage {
+  width: 100%;
+  height: auto;
+}
+.mainBtn {
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background: #f0f2f5;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.mainBtn:hover {
+  background: #369eff;
+  color: #fff;
+}
+.NewArrivals {
+  margin: 1rem 0;
+}
+.navTabsButtonContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.newArrivalButton {
+  font-weight: 400;
+}
+.smtext {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #3d4d5c;
+}
+.FileExample {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+}
+.FileExample .smtext {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #141414;
+}
+.buttonContainer {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fillBtn {
+  background: #369eff;
+  color: #fff;
+}
+
+/* media */
+
+@media screen and (max-width: 992px) {
+  .navTabsButtonContainer { 
+    overflow-x: scroll;
+  }
+  .navTabsButtonContainer button {
+    text-wrap: nowrap;
+  }
+}
