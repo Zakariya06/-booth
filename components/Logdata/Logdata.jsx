@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "../Input";
 import Button from "../Button";
+import Link from "next/link";
 
 function Logdata() {
   return (
@@ -34,8 +35,12 @@ function Logdata() {
 
       <div className="col-lg-4">
         <div className="buttonContainer">
-          <Button value="Preview Booth Page" />
-          <Button value="Generate QR Code" className="fillBtn" />
+          <Link href="/Registration">
+            <Button value="Preview Booth Page" />
+          </Link>
+          <Link href="/Exhibition">
+            <Button value="Generate QR Code" className="fillBtn" />
+          </Link>
         </div>
       </div>
     </div>
