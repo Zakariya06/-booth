@@ -6,9 +6,7 @@ import upload_image from "@/public/upload_image.png";
 import { useSelector } from "react-redux";
 
 function UploadImage() {
-  const url = useSelector((state) => state.imageReducer.url);
-
-  console.log(url);
+  const url = useSelector((state) => state.imageReducer.url); 
 
   return (
     <div className="UploadImageContainer">
