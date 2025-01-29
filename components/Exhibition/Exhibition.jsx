@@ -5,19 +5,18 @@ import BoothDetails from "../BoothDetails";
 import { useDispatch } from "react-redux";
 import { addImage } from "@/lib/feature/ImageSlice";
 
-function Exhibition({ register, setValue }) {
-  const dispatch = useDispatch();
-
+function Exhibition({ register, setValue }) { 
+  
   const handleFileOpen = () => {
     const input = document.createElement("input");
     input.type = "file";
+    input.accept = "image/*";
     input.click();
+  
     input.onchange = (e) => {
       const file = e.target.files[0];
-      let url = URL.createObjectURL(file);
-      if (url) {
-        dispatch(addImage(url));
-        setValue("logo_url", url);
+      if (file) {
+        setValue("logo_url", file);  
       }
     };
   };
@@ -41,6 +40,7 @@ function Exhibition({ register, setValue }) {
       <div className="col-lg-12">
         <Input
           label={"Booth Description"}
+          placeholder={"Enter booth description"}
           input={false}
           {...register("booth_description", { required: true })}
         />
@@ -53,8 +53,7 @@ function Exhibition({ register, setValue }) {
         <Input
           label={" Logo/Banner Upload"}
           placeholder={"Drag  and drop an image or upload"}
-          onClick={handleFileOpen}
-          {...register("logo_url")}
+          onClick={handleFileOpen} 
         />
       </div>
     </div>

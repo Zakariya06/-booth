@@ -5,37 +5,45 @@ import FileDataLabel from "@/components/FileDataLabel";
 import exribition_image from "@/public/exribition_image.png";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { getBoothById } from "../../api/api";
+import { getBoothById, getFiles } from "../../api/api";
 import { useParams } from "next/navigation";
 
 const Exhibition = () => {
-  const { id } = useParams(); // Retrieve dynamic route parameter
-  const [boothData, setBoothData] = useState(null); // State to store fetched data
-  const [loading, setLoading] = useState(true); // State for loading status
+  const { id } = useParams();
+  const [boothData, setBoothData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     const fetchBoothData = async () => {
       try {
-        const { data } = await getBoothById(id); // Fetch booth data by ID
+        const data = await getBoothById(id);
         setBoothData(data);
       } catch (error) {
         console.error("Failed to fetch booth data:", error);
       } finally {
         setLoading(false);
       }
+
+      try {
+        const imageData = await getFiles(9);
+        setFiles(imageData);
+      } catch (error) {
+        console.error("Failed to fetch booth data:", error);
+      }
     };
 
     if (id) {
-      fetchBoothData(); // Fetch data only if the ID exists
+      fetchBoothData();
     }
   }, [id]);
 
   if (loading) {
-    return <p>Loading...</p>; // Display loading state
+    return <p>Loading...</p>;
   }
 
   if (!boothData) {
-    return <p>Booth not found!</p>; // Display error if no data
+    return <p>Booth not found!</p>;
   }
 
   const {
@@ -58,19 +66,19 @@ const Exhibition = () => {
 
             <div className="imageCotent">
               <Image
-                src={logo_url || exribition_image}
+                src={logo_url ? logo_url : exribition_image}
                 alt={exhibition?.name || "Exhibition"}
                 className="extribitionImage"
                 width={100}
                 height={100}
+                unoptimized={true}
               />
             </div>
 
             <div className="filesData">
               <h2 className="mdHeading">Files</h2>
               <div className="fileDataDetail">
-                <FileDataLabel />
-                <FileDataLabel />
+                <FileDataLabel files={files} />
               </div>
             </div>
           </div>
@@ -87,10 +95,18 @@ const Exhibition = () => {
                 <a href={`mailto:${email}`} target="_blank" rel="noreferrer">
                   <Button value="Email" className="fillBtn" />
                 </a>
-                <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer">
+                <a
+                  href={`https://wa.me/${whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Button value="WhatsApp" className="fillBtn" />
                 </a>
-                <a href={`https://t.me/${telegram}`} target="_blank" rel="noreferrer">
+                <a
+                  href={`https://t.me/${telegram}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Button value="Telegram" className="fillBtn" />
                 </a>
               </div>

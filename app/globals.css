@@ -97,6 +97,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+}
+.buttonContainer button {
+  font-size: 0.78rem;
 }
 .fillBtn {
   background: #369eff;
@@ -106,15 +110,28 @@ body {
   background: #dbe0e5;
   color: #141414;
 }
+.qrCodeImage {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
 
 /* media */
 
 @media screen and (max-width: 992px) {
   .navTabsButtonContainer {
     overflow-x: scroll;
+    padding-bottom: 0.4rem;
+  }
+  .navTabsButtonContainer::-webkit-scrollbar {
+    display: none;
   }
   .navTabsButtonContainer button {
     text-wrap: nowrap;
+  }
+  .qrCodeImage {
+    width: 100%;
   }
 }
 
@@ -191,7 +208,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .fileDataLabel {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
 }
@@ -207,6 +224,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .fileLeft {
   border-top: 1px solid #e5e8eb;
   padding: 0.6rem 0;
+  flex: 1;
 }
 .fileRight {
   flex: 1;
@@ -224,11 +242,11 @@ input[type="number"]::-webkit-outer-spin-button {
 .exibitionButtonsContainer .mainBtn {
   width: fit-content;
   font-size: 0.85rem;
-} 
-.ContactButton{
+}
+.ContactButton {
   margin-top: 2rem;
-} 
-.extribitionImage{
+}
+.extribitionImage {
   width: 100%;
   height: auto;
 }
